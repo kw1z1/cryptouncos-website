@@ -5,21 +5,21 @@
 {% block content %}
 <h1>Полезные ресурсы о криптовалютах</h1>
 
-<div class="resource" style="margin-bottom: 30px; padding: 15px; border: 1px solid #ddd;">
+<div class="resource">
     <h2><a href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a></h2>
-    <img src="/static/main/images/coinmarketcap.jpg" alt="CoinMarketCap" width="100" style="border: 1px solid #ccc;">
-    <p>Крупнейший агрегатор данных о криптовалютах. Актуальные цены, графики, рыночная капитализация и многое другое.</p>
+    <img src="{% static 'main/images/coinmarketcap.jpg' %}" alt="CoinMarketCap" width="120">
+    <p>Крупнейший агрегатор данных о криптовалютах. Актуальные цены, графики, рыночная капитализация и многое другое. Незаменимый инструмент для трейдеров и инвесторов.</p>
 </div>
 
-<div class="resource" style="margin-bottom: 30px; padding: 15px; border: 1px solid #ddd;">
+<div class="resource">
     <h2><a href="https://www.coindesk.com/" target="_blank">CoinDesk</a></h2>
-    <img src="/static/main/images/coindesk.jpg" alt="CoinDesk" width="100" style="border: 1px solid #ccc;">
-    <p>Ведущее новостное издание в сфере блокчейна и цифровых активов. Новости, аналитика и образовательные материалы.</p>
+    <img src="{% static 'main/images/coindesk.jpg' %}" alt="CoinDesk" width="120">
+    <p>Ведущее новостное издание в сфере блокчейна и цифровых активов. Новости, аналитика и образовательные материалы от профессиональных журналистов.</p>
 </div>
 
-<div class="resource" style="margin-bottom: 30px; padding: 15px; border: 1px solid #ddd;">
-    <h2><a href="https://binance.com/" target="_blank">Binance Academy</a></h2>
-    <img src="/static/main/images/binance.jpg" alt="Binance Academy" width="100" style="border: 1px solid #ccc;">
-    <p>Образовательный портал от одной из крупнейших бирж. Множество статей и видео для начинающих и продвинутых пользователей.</p>
+<div class="resource">
+    <h2><a href="https://academy.binance.com/" target="_blank">Binance Academy</a></h2>
+    <img src="{% static 'main/images/binance.jpg' %}" alt="Binance Academy" width="120">
+    <p>Образовательный портал от одной из крупнейших бирж. Множество статей и видео для начинающих и продвинутых пользователей на разных языках.</p>
 </div>
 {% endblock %}

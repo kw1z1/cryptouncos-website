@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CryptoUncos - Ваш гид в мире криптовалют{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul style="display: flex; list-style: none; gap: 20px; align-items: center;">
+                <!-- Заглушка для логотипа -->
+                <li><a href="{% url 'home' %}"><img src="/static/main/images/logo.png" alt="CryptoWorld Logo" width="50" style="border: 1px solid #ccc;"></a></li>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'resources' %}">Полезные ресурсы</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding: 20px;">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer style="margin-top: 50px; text-align: center; padding: 20px; background: #f5f5f5;">
+        <p>&copy; 2023 CryptoWorld. Все права защищены.</p>
+    </footer>
+</body>
+</html>

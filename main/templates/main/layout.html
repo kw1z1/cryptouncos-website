@@ -13,17 +13,11 @@
             <ul>
                 <li><a href="{% url 'home' %}"><img src="{% static 'main/images/logo.png' %}" alt="CryptoUncos Logo" width="50"></a></li>
                 <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'blog' %}">Блог</a></li>  <!-- Добавьте эту строку -->
                 <li><a href="{% url 'resources' %}">Полезные ресурсы</a></li>
                 {% if user.is_authenticated %}
                     <li><span style="color: #00ff88;">Привет, {{ user.username }}!</span></li>
-                    <li>
-                        <form method="post" action="{% url 'logout' %}" style="display: inline;">
-                            {% csrf_token %}
-                            <button type="submit" style="background: none; border: none; color: #ffffff; cursor: pointer; font: inherit; padding: 0;">
-                                Выйти
-                            </button>
-                        </form>
-                    </li>
+                    <li><a href="{% url 'logout' %}">Выйти</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Войти</a></li>
                     <li><a href="{% url 'register' %}">Регистрация</a></li>

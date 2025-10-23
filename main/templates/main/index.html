@@ -1,32 +1,125 @@
 {% extends 'main/layout.html' %}
-{% load static %}  <!-- ДОБАВЬТЕ ЭТУ СТРОКУ -->
+{% load static %}
 
-{% block title %}Главная страница | CryptoUncos{% endblock %}
+{% block title %}CryptoUncos - Премиум платформа для крипто-трейдинга{% endblock %}
 
 {% block content %}
-<div class="hero-section">
-    <h1>Добро пожаловать в CryptoUncos!</h1>
-    <p>На этом сайте вы найдете самую актуальную информацию о биткоине, эфириуме и других цифровых активах. Мы раскрываем все секреты и особенности криптовалютного мира.</p>
-</div>
-
-<section class="content-section">
-    <h2>Что такое криптовалюта?</h2>
-    <p>Криптовалюта — это цифровая или виртуальная валюта, которая использует криптографию для безопасности. В отличие от традиционных денег, она децентрализована и обычно работает на технологии блокчейн.</p>
+<!-- Hero Section - полная ширина -->
+<section class="hero full-width">
+    <div class="hero-content container-wide">
+        <div class="hero-text">
+            <h1 class="hero-title">
+                <span class="gradient-text">БУДУЩЕЕ</span>
+                <span class="hero-subtitle">ФИНАНСОВ УЖЕ ЗДЕСЬ</span>
+            </h1>
+            <p class="hero-description">
+                Профессиональная платформа для торговли криптовалютами с 
+                передовой аналитикой и безопасными транзакциями
+            </p>
+            <div class="hero-buttons">
+                <a href="{% url 'blog' %}" class="btn-primary">Блог</a>
+                <a href="#features" class="btn-secondary">Узнать больше</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="crypto-cards">
+                <div class="crypto-card btc">
+                    <div class="crypto-icon">₿</div>
+                    <div class="crypto-info">
+                        <span class="crypto-name">Bitcoin</span>
+                        <span class="crypto-price">$42,158.76</span>
+                    </div>
+                    <div class="crypto-change positive">+2.3%</div>
+                </div>
+                <div class="crypto-card eth">
+                    <div class="crypto-icon">Ξ</div>
+                    <div class="crypto-info">
+                        <span class="crypto-name">Ethereum</span>
+                        <span class="crypto-price">$2,845.32</span>
+                    </div>
+                    <div class="crypto-change positive">+1.8%</div>
+                </div>
+                <div class="crypto-card ada">
+                    <div class="crypto-icon">₳</div>
+                    <div class="crypto-info">
+                        <span class="crypto-name">Cardano</span>
+                        <span class="crypto-price">$0.4521</span>
+                    </div>
+                    <div class="crypto-change negative">-0.5%</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section class="content-section">
-    <h2>Популярные криптовалюты</h2>
-    <ul>
-        <li><strong>Bitcoin (BTC)</strong> - первая и самая известная криптовалюта, цифровое золото</li>
-        <li><strong>Ethereum (ETH)</strong> - платформа для смарт-контрактов и dApps</li>
-        <li><strong>Cardano (ADA)</strong> - научный подход к блокчейну и устойчивое развитие</li>
-        <li><strong>Solana (SOL)</strong> - высокая скорость транзакций и низкие комиссии</li>
-        <li><strong>Polkadot (DOT)</strong> - интероперабельность между блокчейнами</li>
-    </ul>
+<!-- Features Section - полная ширина -->
+<section id="features" class="features full-width">
+    <div class="container-wide">
+        <h2 class="section-title">ПОЧЕМУ ВЫБИРАЮТ <span class="gradient-text">CRYPTOUNCOS</span></h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Мгновенные сделки</h3>
+                <p>Сверхбыстрое исполнение ордеров с минимальными задержками</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Максимальная безопасность</h3>
+                <p>Многоуровневая система защиты активов и холодное хранение</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Профессиональная аналитика</h3>
+                <p>Расширенная техническая аналитика и AI-прогнозы</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Глобальная ликвидность</h3>
+                <p>Доступ к крупнейшим пулам ликвидности по всему миру</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section class="content-section">
-    <h2>Почему выбирают CryptoUncos?</h2>
-    <p>Мы предоставляем проверенную информацию, обучающие материалы и актуальные новости из мира криптовалют. Наша цель - сделать сложные технологии понятными для каждого.</p>
+<!-- Statistics Section - полная ширина -->
+<section class="statistics full-width">
+    <div class="container-wide">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-target="500000">0</div>
+                <div class="stat-label">Активных трейдеров</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="150">0</div>
+                <div class="stat-label">Доступных активов</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="24">0</div>
+                <div class="stat-label">Поддержка 24/7</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="99">0</div>
+                <div class="stat-label">% Надежности</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section - полная ширина -->
+<section class="cta full-width">
+    <div class="container-wide">
+        <div class="cta-content">
+            <h2>ГОТОВЫ НАЧАТЬ?</h2>
+            <p>Присоединяйтесь к сообществу профессиональных трейдеров уже сегодня</p>
+            <div class="cta-buttons">
+                <a href="{% url 'register' %}" class="btn-primary large">Создать аккаунт</a>
+                <a href="{% url 'blog' %}" class="btn-secondary large">Изучить блог</a>
+            </div>
+        </div>
+    </div>
 </section>
 {% endblock %}

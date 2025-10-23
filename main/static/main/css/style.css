@@ -678,3 +678,444 @@ nav form button:hover {
         max-height: 250px;
     }
 }
+/* Современный дизайн для главной страницы */
+
+/* Современный дизайн для главной страницы */
+
+/* Full-width sections */
+.full-width {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+}
+
+.container-wide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(0, 153, 204, 0.03) 0%, transparent 60%),
+        linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #00d4ff 0%, #00ff88 50%, #0099cc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+}
+
+.hero-subtitle {
+    display: block;
+    font-size: 2.8rem;
+    color: #ffffff;
+    font-weight: 300;
+    margin-top: 15px;
+}
+
+.hero-description {
+    font-size: 1.4rem;
+    color: #e0e0e0;
+    margin-bottom: 50px;
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 16px 35px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    color: #000000;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #00d4ff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+}
+
+.btn-primary.large, .btn-secondary.large {
+    padding: 18px 40px;
+    font-size: 1.2rem;
+}
+
+/* Crypto Cards */
+.crypto-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.crypto-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.crypto-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.8s ease;
+}
+
+.crypto-card:hover::before {
+    left: 100%;
+}
+
+.crypto-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(0, 212, 255, 0.6);
+    box-shadow: 
+        0 20px 40px rgba(0, 212, 255, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.crypto-icon {
+    font-size: 2.2rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.crypto-info {
+    flex: 1;
+}
+
+.crypto-name {
+    display: block;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.crypto-price {
+    display: block;
+    font-size: 1rem;
+    color: #cccccc;
+    margin-top: 5px;
+}
+
+.crypto-change {
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    min-width: 70px;
+    text-align: center;
+}
+
+.crypto-change.positive {
+    background: rgba(0, 255, 136, 0.2);
+    color: #00ff88;
+    border: 1px solid rgba(0, 255, 136, 0.4);
+}
+
+.crypto-change.negative {
+    background: rgba(255, 68, 68, 0.2);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 68, 68, 0.4);
+}
+
+/* Features Section */
+.features {
+    padding: 120px 0;
+    background: #0a0a0a;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 80px;
+    color: #ffffff;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    padding: 50px 35px;
+    border-radius: 25px;
+    text-align: center;
+    border: 1px solid #333;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+.feature-card:hover::before {
+    left: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    border-color: #00d4ff;
+    box-shadow: 0 25px 50px rgba(0, 212, 255, 0.25);
+}
+
+.feature-icon {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+}
+
+.feature-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.feature-card p {
+    color: #cccccc;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+/* Statistics Section */
+.statistics {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 50px;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 40px 30px;
+}
+
+.stat-number {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #00d4ff;
+    margin-bottom: 15px;
+}
+
+.stat-label {
+    font-size: 1.2rem;
+    color: #cccccc;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* CTA Section */
+.cta {
+    padding: 120px 0;
+    background: #0a0a0a;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    color: #ffffff;
+}
+
+.cta-content p {
+    font-size: 1.4rem;
+    color: #cccccc;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container-wide {
+        padding: 0 30px;
+    }
+    
+    .hero-content {
+        gap: 60px;
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .full-width {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .container-wide {
+        padding: 0 20px;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 50px;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+    }
+    
+    .hero-buttons, .cta-buttons {
+        justify-content: center;
+    }
+    
+    .crypto-card {
+        padding: 20px;
+    }
+    
+    .hero-description {
+        margin: 0 auto 50px;
+        font-size: 1.2rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.8rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}

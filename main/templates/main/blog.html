@@ -7,9 +7,20 @@
 <h1>Блог о криптовалютах</h1>
 <p>Здесь вы найдете интересные статьи и новости из мира криптовалют и блокчейна.</p>
 
+{% if user.is_staff %}
+<div class="admin-actions">
+    <a href="{% url 'create_post' %}" class="btn-primary">+ Добавить статью</a>
+</div>
+{% endif %}
+
 <div class="posts-list">
     {% for post in posts %}
     <article class="post-preview">
+        {% if post.image %}
+        <div class="post-image">
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        </div>
+        {% endif %}
         <h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
         <div class="post-meta">
             <span class="post-date">Опубликовано: {{ post.date_posted|date:"d.m.Y H:i" }}</span>
@@ -22,6 +33,9 @@
     {% empty %}
     <div class="no-posts">
         <p>Пока нет статей. Скоро здесь появятся интересные материалы!</p>
+        {% if user.is_staff %}
+        <a href="{% url 'create_post' %}" class="btn-primary">Добавить первую статью</a>
+        {% endif %}
     </div>
     {% endfor %}
 </div>

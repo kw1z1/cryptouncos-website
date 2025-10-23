@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 from django.contrib.auth.models import User, Group
-from .models import Post
+from .models import Post, Comment
 
 # Настройка отображения статей
 class PostAdmin(admin.ModelAdmin):
@@ -16,6 +16,21 @@ class PostAdmin(admin.ModelAdmin):
     summary_preview.short_description = 'Краткое содержание'
 
 admin.site.register(Post, PostAdmin)
+
+# Настройка отображения комментариев
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('author', 'post', 'created_date', 'text_preview')
+    list_filter = ('created_date', 'author')
+    search_fields = ('text', 'author__username', 'post__title')
+    date_hierarchy = 'created_date'
+    
+    def text_preview(self, obj):
+        return obj.text[:100] + '...' if len(obj.text) > 100 else obj.text
+    text_preview.short_description = 'Текст комментария'
+
+admin.site.register(Comment, CommentAdmin)
+
+# Остальной код админки остается без изменений...
 
 # Настройка отображения пользователей
 class UserAdmin(admin.ModelAdmin):

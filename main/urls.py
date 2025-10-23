@@ -10,7 +10,7 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='main/login.html'), name='login'),
     path('logout/', views.custom_logout, name='logout'),
-    # Новые URL для блога
     path('blog/', views.blog, name='blog'),
     path('post/<int:post_id>/', views.post_detail, name='post_detail'),
+    path('create-post/', views.create_post, name='create_post'),  # Новая строка
 ]

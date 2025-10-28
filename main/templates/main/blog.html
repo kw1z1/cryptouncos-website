@@ -1,42 +1,63 @@
 {% extends 'main/layout.html' %}
 {% load static %}
 
-{% block title %}Блог | CryptoUncos{% endblock %}
+{% block title %}BLOG • CryptoUncos{% endblock %}
 
 {% block content %}
-<h1>Блог о криптовалютах</h1>
-<p>Здесь вы найдете интересные статьи и новости из мира криптовалют и блокчейна.</p>
-
-{% if user.is_staff %}
-<div class="admin-actions">
-    <a href="{% url 'create_post' %}" class="btn-primary">+ Добавить статью</a>
-</div>
-{% endif %}
-
-<div class="posts-list">
-    {% for post in posts %}
-    <article class="post-preview">
-        {% if post.image %}
-        <div class="post-image">
-            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+<section class="blog-hero">
+    <div class="container">
+        <div class="blog-header">
+            <h1>ALPHA BLOG</h1>
+            <p>Market insights, technical analysis, and crypto intelligence</p>
         </div>
-        {% endif %}
-        <h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
-        <div class="post-meta">
-            <span class="post-date">Опубликовано: {{ post.date_posted|date:"d.m.Y H:i" }}</span>
-        </div>
-        <div class="post-summary">
-            <p>{{ post.summary }}</p>
-        </div>
-        <a href="{% url 'post_detail' post.id %}" class="read-more">Читать далее →</a>
-    </article>
-    {% empty %}
-    <div class="no-posts">
-        <p>Пока нет статей. Скоро здесь появятся интересные материалы!</p>
+        
         {% if user.is_staff %}
-        <a href="{% url 'create_post' %}" class="btn-primary">Добавить первую статью</a>
+        <div class="blog-actions">
+            <a href="{% url 'create_post' %}" class="btn btn-primary">
+                <span class="btn-text">+ NEW POST</span>
+            </a>
+        </div>
         {% endif %}
     </div>
-    {% endfor %}
-</div>
+</section>
+
+<section class="blog-posts">
+    <div class="container">
+        <div class="posts-grid">
+            {% for post in posts %}
+            <article class="post-card">
+                <div class="post-meta">
+                    <span class="post-date">{{ post.date_posted|date:"M d, Y" }}</span>
+                    <span class="post-readtime">5 min read</span>
+                </div>
+                
+                <h2 class="post-title">
+                    <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
+                </h2>
+                
+                <p class="post-excerpt">{{ post.summary }}</p>
+                
+                <div class="post-footer">
+                    <a href="{% url 'post_detail' post.id %}" class="read-more">
+                        READ ANALYSIS →
+                    </a>
+                    <span class="comment-count">{{ post.comments.count }} comments</span>
+                </div>
+                
+                <div class="post-glow"></div>
+            </article>
+            {% empty %}
+            <div class="no-posts">
+                <h3>NO CONTENT YET</h3>
+                <p>Stay tuned for market insights and analysis</p>
+                {% if user.is_staff %}
+                <a href="{% url 'create_post' %}" class="btn btn-primary">
+                    <span class="btn-text">CREATE FIRST POST</span>
+                </a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}

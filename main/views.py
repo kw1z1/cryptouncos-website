@@ -6,9 +6,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import CommentForm, PostForm
+from .services import CryptoService  # ← ДОБАВЬТЕ ЭТУ СТРОКУ
 
 def index(request):
-    return render(request, 'main/index.html')
+    crypto_prices = CryptoService.get_crypto_prices()  # ← ДОБАВЬТЕ ЭТУ СТРОКУ
+    return render(request, 'main/index.html', {'crypto_prices': crypto_prices})  # ← ИЗМЕНИТЕ ЭТУ СТРОКУ
 
 def resources(request):
     return render(request, 'main/resources.html')
@@ -78,3 +80,18 @@ def create_post(request):
         form = PostForm()
     
     return render(request, 'main/create_post.html', {'form': form})
+
+# ДОБАВЬТЕ ЭТУ ФУНКЦИЮ В КОНЕЦ ФАЙЛА ↓
+def bitcoin_chart(request):
+    from .services import CryptoService
+    
+    # Получаем данные для графика
+    days = int(request.GET.get('days', 30))
+    chart_data = CryptoService.get_bitcoin_chart_data(days)
+    indicators = CryptoService.calculate_indicators(chart_data)
+    
+    return render(request, 'main/bitcoin_chart.html', {
+        'chart_data': chart_data,
+        'indicators': indicators,
+        'timeframe': days
+    })

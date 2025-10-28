@@ -12,5 +12,6 @@ urlpatterns = [
     path('logout/', views.custom_logout, name='logout'),
     path('blog/', views.blog, name='blog'),
     path('post/<int:post_id>/', views.post_detail, name='post_detail'),
-    path('create-post/', views.create_post, name='create_post'),  # Новая строка
+    path('create-post/', views.create_post, name='create_post'), 
+    path('bitcoin-chart/', views.bitcoin_chart, name='bitcoin_chart'), # Новая строка
 ]

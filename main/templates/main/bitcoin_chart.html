@@ -1,0 +1,122 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}BTC CHART • CryptoUncos{% endblock %}
+
+{% block content %}
+<section class="chart-hero">
+    <div class="container">
+        <div class="chart-header">
+            <h1>BITCOIN <span class="gradient-text">ANALYTICS</span></h1>
+            <p>Professional trading chart with real-time indicators</p>
+        </div>
+    </div>
+</section>
+
+<section class="chart-section">
+    <div class="container">
+        <div class="chart-controls">
+            <div class="timeframe-selector">
+                <a href="?days=1" class="timeframe-btn {% if timeframe == 1 %}active{% endif %}">24H</a>
+                <a href="?days=7" class="timeframe-btn {% if timeframe == 7 %}active{% endif %}">7D</a>
+                <a href="?days=30" class="timeframe-btn {% if timeframe == 30 %}active{% endif %}">1M</a>
+                <a href="?days=90" class="timeframe-btn {% if timeframe == 90 %}active{% endif %}">3M</a>
+            </div>
+            
+            <div class="chart-actions">
+                <button id="fullscreenBtn" class="btn btn-secondary">
+                    <span class="btn-text">FULLSCREEN</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-wrapper">
+                <canvas id="candlestickChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Technical Indicators -->
+        <div class="indicators-grid">
+            <div class="indicator-card">
+                <h3>RSI</h3>
+                <div class="indicator-value {% if indicators.rsi < 30 %}oversold{% elif indicators.rsi > 70 %}overbought{% endif %}">
+                    {{ indicators.rsi }}
+                </div>
+                <div class="indicator-bar">
+                    <div class="rsi-bar" style="width: {{ indicators.rsi }}%"></div>
+                </div>
+                <div class="indicator-label">
+                    {% if indicators.rsi < 30 %}OVERSOLD{% elif indicators.rsi > 70 %}OVERBOUGHT{% else %}NEUTRAL{% endif %}
+                </div>
+            </div>
+
+            <div class="indicator-card">
+                <h3>MACD</h3>
+                <div class="indicator-value {% if indicators.macd > indicators.signal %}bullish{% else %}bearish{% endif %}">
+                    {{ indicators.macd }}
+                </div>
+                <div class="indicator-label">
+                    Signal: {{ indicators.signal }}
+                </div>
+            </div>
+
+            <div class="indicator-card">
+                <h3>TREND</h3>
+                <div class="indicator-value trend-{{ indicators.prediction.direction|lower }}">
+                    {{ indicators.prediction.direction }}
+                </div>
+                <div class="indicator-label">
+                    SMA 20/50: {{ indicators.sma_20|floatformat:0 }}/{{ indicators.sma_50|floatformat:0 }}
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Prediction -->
+        <div class="prediction-section">
+            <div class="prediction-header">
+                <h2>AI PREDICTION</h2>
+                <div class="confidence-badge">
+                    {{ indicators.prediction.confidence }}% CONFIDENCE
+                </div>
+            </div>
+            
+            <div class="prediction-content">
+                <div class="price-targets">
+                    <div class="target">
+                        <span class="target-label">TARGET LOW</span>
+                        <span class="target-price">${{ indicators.prediction.target_low }}</span>
+                    </div>
+                    <div class="target">
+                        <span class="target-label">CURRENT</span>
+                        <span class="target-price current">${{ indicators.prediction.current_price }}</span>
+                    </div>
+                    <div class="target">
+                        <span class="target-label">TARGET HIGH</span>
+                        <span class="target-price">${{ indicators.prediction.target_high }}</span>
+                    </div>
+                </div>
+                
+                <div class="prediction-chart">
+                    <div class="price-line">
+                        <div class="line-start"></div>
+                        <div class="line-mid {{ indicators.prediction.direction|lower }}"></div>
+                        <div class="line-end"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+<script>
+    // Данные графика из Django
+    const chartData = {{ chart_data|safe }};
+    const indicators = {{ indicators|safe }};
+</script>
+<script src="{% static 'main/js/candlestick-chart.js' %}"></script>
+{% endblock %}

@@ -78,3 +78,17 @@ def create_post(request):
         form = PostForm()
     
     return render(request, 'main/create_post.html', {'form': form})
+
+def bitcoin_chart(request):
+    from .services import CryptoService
+    
+    # Получаем данные для графика
+    days = int(request.GET.get('days', 30))
+    chart_data = CryptoService.get_bitcoin_chart_data(days)
+    indicators = CryptoService.calculate_indicators(chart_data)
+    
+    return render(request, 'main/bitcoin_chart.html', {
+        'chart_data': chart_data,
+        'indicators': indicators,
+        'timeframe': days
+    })

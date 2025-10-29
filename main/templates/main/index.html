@@ -1,123 +1,133 @@
 {% extends 'main/layout.html' %}
 {% load static %}
 
-{% block title %}CryptoUncos - Премиум платформа для крипто-трейдинга{% endblock %}
+{% block title %}CryptoUncos • Web3 Trading Platform{% endblock %}
 
 {% block content %}
-<!-- Hero Section - полная ширина -->
-<section class="hero full-width">
-    <div class="hero-content container-wide">
-        <div class="hero-text">
-            <h1 class="hero-title">
-                <span class="gradient-text">БУДУЩЕЕ</span>
-                <span class="hero-subtitle">ФИНАНСОВ УЖЕ ЗДЕСЬ</span>
-            </h1>
-            <p class="hero-description">
-                Профессиональная платформа для торговли криптовалютами с 
-                передовой аналитикой и безопасными транзакциями
-            </p>
-            <div class="hero-buttons">
-                <a href="{% url 'blog' %}" class="btn-primary">Блог</a>
-                <a href="#features" class="btn-secondary">Узнать больше</a>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="badge">ALPHA v1.0</div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">TRADE</span>
+                    <span class="hero-subtitle">LIKE A CYBORG</span>
+                </h1>
+                <p class="hero-description">
+                    Next-gen crypto trading platform powered by AI.<br>
+                    Zero fees • Instant execution • Institutional tools
+                </p>
+                <div class="hero-buttons">
+                    <a href="{% url 'register' %}" class="btn btn-primary">
+                        <span class="btn-text">LAUNCH APP</span>
+                        <span class="btn-glow"></span>
+                    </a>
+                    <a href="{% url 'bitcoin_chart' %}" class="btn btn-secondary">
+                        <span class="btn-text">VIEW CHARTS</span>
+                    </a>
+                    <a href="{% url 'blog' %}" class="btn btn-tertiary">
+                        <span class="btn-text">READ BLOG</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="crypto-grid">
+                    {% for crypto in crypto_prices %}
+                    <div class="crypto-tile {% if crypto.change > 0 %}up{% else %}down{% endif %}">
+                        <div class="crypto-header">
+                            <span class="crypto-symbol">{{ crypto.symbol }}</span>
+                            <span class="crypto-change {% if crypto.change > 0 %}positive{% else %}negative{% endif %}">
+                                {{ crypto.change|floatformat:2 }}%
+                            </span>
+                        </div>
+                        <div class="crypto-price">${{ crypto.price|floatformat:2 }}</div>
+                        <div class="crypto-name">{{ crypto.name }}</div>
+                        <div class="price-glow"></div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="crypto-cards">
-                <div class="crypto-card btc">
-                    <div class="crypto-icon">₿</div>
-                    <div class="crypto-info">
-                        <span class="crypto-name">Bitcoin</span>
-                        <span class="crypto-price">$42,158.76</span>
-                    </div>
-                    <div class="crypto-change positive">+2.3%</div>
-                </div>
-                <div class="crypto-card eth">
-                    <div class="crypto-icon">Ξ</div>
-                    <div class="crypto-info">
-                        <span class="crypto-name">Ethereum</span>
-                        <span class="crypto-price">$2,845.32</span>
-                    </div>
-                    <div class="crypto-change positive">+1.8%</div>
-                </div>
-                <div class="crypto-card ada">
-                    <div class="crypto-icon">₳</div>
-                    <div class="crypto-info">
-                        <span class="crypto-name">Cardano</span>
-                        <span class="crypto-price">$0.4521</span>
-                    </div>
-                    <div class="crypto-change negative">-0.5%</div>
-                </div>
-            </div>
+        
+        <!-- Animated background elements -->
+        <div class="hero-bg">
+            <div class="grid-lines"></div>
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+            <div class="pulse-dot dot-1"></div>
+            <div class="pulse-dot dot-2"></div>
         </div>
     </div>
 </section>
 
-<!-- Features Section - полная ширина -->
-<section id="features" class="features full-width">
-    <div class="container-wide">
-        <h2 class="section-title">ПОЧЕМУ ВЫБИРАЮТ <span class="gradient-text">CRYPTOUNCOS</span></h2>
+<!-- Stats Bar -->
+<section class="stats-bar">
+    <div class="stats-container">
+        <div class="stat">
+            <div class="stat-value">$2.1B+</div>
+            <div class="stat-label">Volume 24h</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">127K+</div>
+            <div class="stat-label">Traders</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">0.01s</div>
+            <div class="stat-label">Avg Speed</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">150+</div>
+            <div class="stat-label">Markets</div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">BUILT FOR <span class="gradient-text">DEGENS</span></h2>
         
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Мгновенные сделки</h3>
-                <p>Сверхбыстрое исполнение ордеров с минимальными задержками</p>
+                <div class="feature-icon">🚀</div>
+                <h3>INSTANT SWAPS</h3>
+                <p>Near-zero slippage with our advanced AMM. Trade like a pro.</p>
+                <div class="feature-glow"></div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>AI ALPHA</h3>
+                <p>Machine learning signals and on-chain analytics. Stay ahead.</p>
+                <div class="feature-glow"></div>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">🛡️</div>
-                <h3>Максимальная безопасность</h3>
-                <p>Многоуровневая система защиты активов и холодное хранение</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Профессиональная аналитика</h3>
-                <p>Расширенная техническая аналитика и AI-прогнозы</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🌍</div>
-                <h3>Глобальная ликвидность</h3>
-                <p>Доступ к крупнейшим пулам ликвидности по всему миру</p>
+                <h3>FULL CUSTODY</h3>
+                <p>Your keys, your crypto. Non-custodial by design.</p>
+                <div class="feature-glow"></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Statistics Section - полная ширина -->
-<section class="statistics full-width">
-    <div class="container-wide">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number" data-target="500000">0</div>
-                <div class="stat-label">Активных трейдеров</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" data-target="150">0</div>
-                <div class="stat-label">Доступных активов</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" data-target="24">0</div>
-                <div class="stat-label">Поддержка 24/7</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" data-target="99">0</div>
-                <div class="stat-label">% Надежности</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA Section - полная ширина -->
-<section class="cta full-width">
-    <div class="container-wide">
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
         <div class="cta-content">
-            <h2>ГОТОВЫ НАЧАТЬ?</h2>
-            <p>Присоединяйтесь к сообществу профессиональных трейдеров уже сегодня</p>
+            <h2>READY TO APE IN?</h2>
+            <p>Join the future of decentralized trading today</p>
             <div class="cta-buttons">
-                <a href="{% url 'register' %}" class="btn-primary large">Создать аккаунт</a>
-                <a href="{% url 'blog' %}" class="btn-secondary large">Изучить блог</a>
+                <a href="{% url 'register' %}" class="btn btn-primary large">
+                    <span class="btn-text">START TRADING</span>
+                    <span class="btn-glow"></span>
+                </a>
+                <a href="{% url 'bitcoin_chart' %}" class="btn btn-secondary large">
+                    <span class="btn-text">ANALYTICS</span>
+                </a>
             </div>
         </div>
     </div>

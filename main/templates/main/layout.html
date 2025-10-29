@@ -3,24 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}CryptoUncos - Ваш гид в мире криптовалют{% endblock %}</title>
+    <title>{% block title %}CryptoUncos - Web3 Trading Platform{% endblock %}</title>
     {% load static %}
+    
+    <!-- Google Fonts Space Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="{% url 'home' %}"><img src="{% static 'main/images/logo.png' %}" alt="CryptoUncos Logo" width="50"></a></li>
-                <li><a href="{% url 'home' %}">Главная</a></li>
-                <li><a href="{% url 'blog' %}">Блог</a></li>  <!-- Добавьте эту строку -->
-                <li><a href="{% url 'resources' %}">Полезные ресурсы</a></li>
+                <li><a href="{% url 'home' %}" class="nav-logo">
+                    <span class="logo-text">CRYPTOUNCOS</span>
+                </a></li>
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="{% url 'bitcoin_chart' %}">CHARTS</a></li>
+                <li><a href="{% url 'blog' %}">BLOG</a></li>
+                <li><a href="{% url 'resources' %}">RESOURCES</a></li>
                 {% if user.is_authenticated %}
-                    <li><span style="color: #00ff88;">Привет, {{ user.username }}!</span></li>
-                    <li><a href="{% url 'logout' %}">Выйти</a></li>
+                    <li><span class="user-welcome">GM, {{ user.username }}!</span></li>
+                    <li><a href="{% url 'logout' %}" class="nav-btn">LOGOUT</a></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}">Войти</a></li>
-                    <li><a href="{% url 'register' %}">Регистрация</a></li>
+                    <li><a href="{% url 'login' %}" class="nav-btn">LOGIN</a></li>
+                    <li><a href="{% url 'register' %}" class="nav-btn primary">SIGN UP</a></li>
                 {% endif %}
             </ul>
         </nav>
